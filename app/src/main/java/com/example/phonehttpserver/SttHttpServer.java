@@ -23,9 +23,9 @@ public class SttHttpServer extends NanoHTTPD {
     @Override
     public Response serve(IHTTPSession session) {
         if ("/startSTT".equals(session.getUri())) {
-            new Thread(() -> {
+            ((MainActivity) context).runOnUiThread(() -> {
                 ((MainActivity) context).startListening();
-            }).start();
+            });
             return newFixedLengthResponse(Response.Status.OK, "text/plain", "STT started");
         } else if ("/sttResult".equals(session.getUri())) {
             JSONObject result = MainActivity.getSTTResult();
