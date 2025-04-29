@@ -29,6 +29,7 @@ public class SttHttpServer extends NanoHTTPD {
             return newFixedLengthResponse(Response.Status.OK, "text/plain", "STT started");
         } else if ("/sttResult".equals(session.getUri())) {
             JSONObject result = MainActivity.getSTTResult();
+            MainActivity.resetSTTResult();
             return newFixedLengthResponse(Response.Status.OK, "application/json", result.toString());
         } else {
             return newFixedLengthResponse(Response.Status.NOT_FOUND, "text/plain", "Not Found");

@@ -79,5 +79,13 @@ public class MainActivity extends Activity {
             httpServer.stop();  // Ensure NanoHTTPD releases the port
         }
     }
+
+    public static synchronized String getSTTResultText() {
+        return sttResultText;
+    }
+
+    public static synchronized boolean isSTTResultReady() {
+        return sttResultReady;
+    }
 }
 
